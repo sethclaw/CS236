@@ -1,0 +1,3 @@
+(STRING,"'good string'",5)
+Input Error on line 7
+

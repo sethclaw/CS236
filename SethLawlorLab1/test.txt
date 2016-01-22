@@ -1,0 +1,4 @@
+(FACTS,"Facts",1)
+(COLON,":",1)
+Input Error on line 2
+

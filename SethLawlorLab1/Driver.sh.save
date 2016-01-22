@@ -1,0 +1,15 @@
+#!/bin/bash
+clear;clear;
+EXE=Compiled_Code
+ 
+g++ -std=c++11 -g -o $EXE *.h *cpp -Wall
+ if (( $? )) ;
+then 
+	echo Compilation Failed;
+	read -p "Press enter to exit";
+else 
+	chmod 755 $EXE;
+	#valgrind --tool=memcheck --leak-check=yes --track-origins=yes ./Compiled_Code
+	rm ./$EXE
+	read -p "Press enter to exit..."
+fi;
