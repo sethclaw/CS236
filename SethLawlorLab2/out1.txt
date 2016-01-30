@@ -1,84 +1,101 @@
-(SCHEMES,"Schemes",3)
-(COLON,":",3)
-(ID,"snap",4)
-(LEFT_PAREN,"(",4)
-(ID,"S",4)
-(COMMA,",",4)
-(ID,"N",4)
-(COMMA,",",4)
-(ID,"A",4)
-(COMMA,",",4)
-(ID,"P",4)
-(RIGHT_PAREN,")",4)
-(ID,"HasSameAddress",5)
-(LEFT_PAREN,"(",5)
-(ID,"X",5)
-(COMMA,",",5)
-(ID,"Y",5)
-(RIGHT_PAREN,")",5)
-(FACTS,"Facts",7)
-(COLON,":",7)
-(ID,"snap",8)
-(LEFT_PAREN,"(",8)
-(STRING,"'12345'",8)
-(COMMA,",",8)
-(STRING,"'C. Brown'",8)
-(COMMA,",",8)
-(STRING,"'12 Apple'",8)
-(COMMA,",",8)
-(STRING,"'555-1234'",8)
-(RIGHT_PAREN,")",8)
-(PERIOD,".",8)
-(ID,"snap",9)
-(LEFT_PAREN,"(",9)
-(STRING,"'33333'",9)
-(COMMA,",",9)
-(STRING,"'Snoopy'",9)
-(COMMA,",",9)
-(STRING,"'12 Apple'",9)
-(COMMA,",",9)
-(STRING,"'555-1234'",9)
-(RIGHT_PAREN,")",9)
-(PERIOD,".",9)
-(RULES,"Rules",11)
-(COLON,":",11)
-(ID,"HasSameAddress",12)
-(LEFT_PAREN,"(",12)
-(ID,"X",12)
-(COMMA,",",12)
-(ID,"Y",12)
-(RIGHT_PAREN,")",12)
-(COLON_DASH,":-",12)
-(ID,"snap",12)
-(LEFT_PAREN,"(",12)
-(ID,"A",12)
-(COMMA,",",12)
-(ID,"X",12)
-(COMMA,",",12)
-(ID,"B",12)
-(COMMA,",",12)
-(ID,"C",12)
-(RIGHT_PAREN,")",12)
-(COMMA,",",12)
-(ID,"snap",12)
-(LEFT_PAREN,"(",12)
-(ID,"D",12)
-(COMMA,",",12)
-(ID,"Y",12)
-(COMMA,",",12)
-(ID,"B",12)
-(COMMA,",",12)
-(ID,"E",12)
-(RIGHT_PAREN,")",12)
-(PERIOD,".",12)
-(QUERIES,"Queries",14)
-(COLON,":",14)
-(ID,"HasSameAddress",15)
-(LEFT_PAREN,"(",15)
-(STRING,"'Snoopy'",15)
-(COMMA,",",15)
-(ID,"Who",15)
-(RIGHT_PAREN,")",15)
-(Q_MARK,"?",15)
-(EOF,"",15)
-Total Tokens = 83
+Success!
+Schemes(10):
+  snap(S,N,A,P)
+  csg(C,S,G)
+  cp(C,Q)
+  cdh(C,D,H)
+  cr(C,R)
+  before(C1,C2)
+  tthCourses(C)
+  Schedule(N,C,R,D,H)
+  Grades(N,C,G)
+  Students(C,R,N,G)
+Facts(27):
+  snap('12345','C. Brown','12 Apple St.','555-1234')
+  snap('67890','L. Van Pelt','34 Pear Ave.','555-5678')
+  snap('22222','P. Patty','56 Grape Blvd.','555-9999')
+  snap('33333','Snoopy','12 Apple St.','555-1234')
+  csg('CS101','12345','A')
+  csg('CS101','67890','B')
+  csg('EE200','12345','C')
+  csg('EE200','22222','B+')
+  csg('EE200','33333','B')
+  csg('CS101','33333','A-')
+  csg('PH100','67890','C+')
+  cp('CS101','CS100')
+  cp('EE200','EE005')
+  cp('EE200','CS100')
+  cp('CS120','CS101')
+  cp('CS121','CS120')
+  cp('CS205','CS101')
+  cp('CS206','CS121')
+  cp('CS206','CS205')
+  cdh('CS101','Tu','10AM')
+  cdh('EE200','M','10AM')
+  cdh('EE200','W','1PM')
+  cdh('EE200','F','10AM')
+  cdh('PH100','Th','11AM')
+  cr('CS101','Turing Aud.')
+  cr('EE200','25 Ohm Hall')
+  cr('PH100','Newton Lab.')
+Rules(7):
+  before(C1,C2) :- cp(C2,C1)
+  before(C1,C2) :- cp(C3,C1),before(C3,C2)
+  tthCourses(C) :- cdh(C,'Tu',H)
+  tthCourses(C) :- cdh(C,'Th',H)
+  Schedule(N,C,R,D,H) :- snap(S,N,A,P),csg(C,S,G),cr(C,R),cdh(C,D,H)
+  Grades(N,C,G) :- snap(S,N,A,P),csg(C,S,G)
+  Students(C,R,N,G) :- snap(S,N,A,P),csg(C,S,G),cr(C,R)
+Queries(11):
+  snap(Id,'Snoopy',A,P)
+  csg(Course,'33333',Grade)
+  cp(Course,'CS100')
+  cdh('EE200',Day,Hour)
+  cr('CS101',Room)
+  tthCourses(C)
+  before('CS100','CS206')
+  before('CS100',prerequisiteTo)
+  Schedule('Snoopy',C,R,D,H)
+  Grades('Snoopy',C,G)
+  Students('CS101',R,N,G)
+Domain(40):
+  '10AM'
+  '11AM'
+  '12 Apple St.'
+  '12345'
+  '1PM'
+  '22222'
+  '25 Ohm Hall'
+  '33333'
+  '34 Pear Ave.'
+  '555-1234'
+  '555-5678'
+  '555-9999'
+  '56 Grape Blvd.'
+  '67890'
+  'A'
+  'A-'
+  'B'
+  'B+'
+  'C'
+  'C+'
+  'C. Brown'
+  'CS100'
+  'CS101'
+  'CS120'
+  'CS121'
+  'CS205'
+  'CS206'
+  'EE005'
+  'EE200'
+  'F'
+  'L. Van Pelt'
+  'M'
+  'Newton Lab.'
+  'P. Patty'
+  'PH100'
+  'Snoopy'
+  'Th'
+  'Tu'
+  'Turing Aud.'
+  'W'

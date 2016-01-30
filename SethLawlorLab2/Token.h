@@ -10,10 +10,10 @@ enum TokenType {
 		FACTS,//1
 		RULES,//2
 		QUERIES,//3
-		COLON,
-		PERIOD,
-		Q_MARK,
-		LEFT_PAREN,
+		COLON,//4
+		PERIOD,//5
+		Q_MARK,//6
+		LEFT_PAREN,//7
 		RIGHT_PAREN,
 		COMMA,
 		COLON_DASH,

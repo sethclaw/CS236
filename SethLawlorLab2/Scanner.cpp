@@ -120,9 +120,9 @@ bool Scanner::ScanId(char d,ifstream& file){
 };
 
 void Scanner::print(ofstream& output){
-	for(unsigned i = 0; i < myTokens.size(); i++){
+	/*for(unsigned i = 0; i < myTokens.size(); i++){
 		cout << myTokens[i].getInfo() << endl;
-	}
+	}*/
 	for(unsigned i = 0; i < myTokens.size(); i++){
 		output << myTokens[i].getInfo() << endl;
 	}
