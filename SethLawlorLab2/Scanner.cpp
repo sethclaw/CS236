@@ -1,9 +1,4 @@
 #include "Scanner.h"
-#include "Token.h"
-#include <iostream>
-#include <cctype>
-#include <sstream>
-#include <vector>
 
 using namespace std;
 
@@ -131,4 +126,8 @@ void Scanner::print(ofstream& output){
 	for(unsigned i = 0; i < myTokens.size(); i++){
 		output << myTokens[i].getInfo() << endl;
 	}
+}
+
+vector<Token> Scanner::getVector(){
+	return myTokens;
 }

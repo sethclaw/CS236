@@ -1,12 +1,12 @@
 #ifndef SCANNER_H
 #define SCANNER_H
-
-#include "Token.h"
 #include "Token.h"
 #include <vector>
 #include <string>
 #include <fstream>
-
+#include <sstream>
+#include <cctype>
+#include <iostream>
 
 using namespace std;
 
@@ -16,6 +16,7 @@ public:
 		~Scanner();
 		void Scan(ifstream&);
 		void print(ofstream&);
+		vector<Token> getVector();
 private:
 	vector<Token> myTokens;
 	bool errors;

@@ -1,4 +1,3 @@
-
 #ifndef TOKEN_H
 #define TOKEN_H
 
@@ -26,10 +25,8 @@ enum TokenType {
 
 class Token {
 	public:
-		Token();
-		~Token();
 		Token(TokenType, string, int);
-		
+		~Token();
 		TokenType getType();
 		string getValue();
 		int getLine();
