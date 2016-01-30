@@ -6,17 +6,17 @@
 using namespace std;
 
 enum TokenType {
-		COMMA,
+		SCHEMES,//0
+		FACTS,//1
+		RULES,//2
+		QUERIES,//3
+		COLON,
 		PERIOD,
 		Q_MARK,
 		LEFT_PAREN,
 		RIGHT_PAREN,
-		COLON,
+		COMMA,
 		COLON_DASH,
-		SCHEMES,
-		FACTS,
-		RULES,
-		QUERIES,
 		ID,
 		STRING,
 		ERROR,
@@ -25,6 +25,7 @@ enum TokenType {
 
 class Token {
 	public:
+		Token();
 		Token(TokenType, string, int);
 		~Token();
 		TokenType getType();

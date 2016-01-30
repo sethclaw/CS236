@@ -16,10 +16,11 @@ int main(int argc, char* argv[]){
 	file2write.open(argv[2]);
 
 	Scanner scan;
-	Parser parse;
 	scan.Scan(file2read);
 	cout << "Datalog Scanner + Parser" << endl;
 	scan.print(file2write);
+	/* NOW were parsin'!*/
+	Parser parse(scan.getVector());
 	parse.Parse();
 	file2read.close();
 	file2write.close();
